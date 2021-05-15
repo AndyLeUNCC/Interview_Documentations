@@ -1,0 +1,34 @@
+# CCI in the right colors
+
+# green 0 105 64
+# gold 185,151,91
+
+#C
+border 0 105 64
+fill 0 105 64
+rectangle 32 94 45 161
+border 0 105 64
+fill 0 105 64
+rectangle 77 230 65 25
+border 0 105 64
+fill 0 105 64
+rectangle 76 94 65 25
+
+#C
+border 0 105 64
+fill 0 105 64
+rectangle 165 94 45 161
+border 0 105 64
+fill 0 105 64
+rectangle 211 230 65 25
+border 0 105 64
+fill 0 105 64
+rectangle 211 94 65 25
+
+#I
+border 0 105 64
+fill 0 105 64
+rectangle 305 153 47 105
+border 185 151 91
+fill 185 151 91
+circle 326 115 20

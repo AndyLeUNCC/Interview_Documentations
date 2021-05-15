@@ -1,0 +1,24 @@
+border 0 105 64
+fill 76 76 76
+rectangle 32 94 45 161
+border 0 105 64
+fill 147 147 147
+rectangle 77 230 65 25
+border 0 105 64
+fill 203 203 203
+rectangle 76 94 65 25
+border 0 105 64
+fill 89 89 89
+rectangle 165 94 45 161
+border 0 105 64
+fill 175 175 175
+rectangle 211 230 65 25
+border 0 105 64
+fill 126 126 126
+rectangle 211 94 65 25
+border 0 105 64
+fill 61 61 61
+rectangle 305 153 47 105
+border 185 151 91
+fill 56 56 56
+circle 326 115 20

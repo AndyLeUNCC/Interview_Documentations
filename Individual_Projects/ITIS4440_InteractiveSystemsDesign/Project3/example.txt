@@ -1,0 +1,20 @@
+# example from project3
+
+# circle
+border 0 0 0
+fill 255 255 0
+circle 107 98 50
+
+# rectangle
+border 0 0 0
+fill 255 102 102
+rectangle 22 19 175 28
+
+# triangle
+border 255 102 102
+fill 217 72 190
+triangle 103 108 53 208 153 208
+
+# line
+border 0 0 0
+line 211 21 210 207
