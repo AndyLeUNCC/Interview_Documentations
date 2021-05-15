@@ -1,0 +1,117 @@
+﻿Feature: Update Event
+
+
+User Story: As an user, I would like to select and update my events when information changes.
+
+
+Scenario: As a user, I want to be able to navigate from the list of events page to the selected event page
+
+
+Given I am on the list of events page
+When I click on the Edit button on the event which I would like to update information
+Then I should be on the Update Event page
+And I should see the text “Update Event” on the top of this page
+And I should see the “Title” field 
+And the content of title event showed on the textbox to let me enter the new title
+And I should see the “Description” field
+And the content of description event showed on the text box to let me enter the new description
+And I should see the “Event Location” field
+And the content of event location event showed on the text box to let me enter the new event location
+And I should see the “Month”, “Day”, “Year”, “Hour” and “Minute”  fields
+And the content of date time event showed on the text box to let me enter the new date time
+And I should see the “Duration” field
+And the content of duration showed on the textbox to let me enter the new duration
+And I should see the text “* Event duration is optional” 
+When I click the Update Event button
+Then there is a message to notify the user about this event updated successfully or not.
+If the requirement information is entered, then I click the Update Event button, then the system updates the entered information of the event into the database (events table). Then the list of events page will be shown and the updated information of the event reflected on the list of events.
+
+
+________________
+
+
+
+
+
+
+Feature: Delete Event
+ 
+User Story: As an event organizer, I would like to delete it from the website.  
+
+
+Scenario: As an event organizer, I want to be able to navigate from homepage to the event list page so that I can delete that one event. 
+
+
+Given I am on the homepage
+When I click on the sign in/ registration links
+Then I should have access to my account
+When I click on the drop down navigation menu
+Then I should see the Event List link option
+When I click on the Event List option
+Then I should see the Event List page
+And I should see events listed. 
+And I should see the “create” button on the top right hand side event page. 
+And I should see the “update” button right hand side of the event 
+And I should see the “delete” button on the bottom right hand side of the event list page
+And I should see the checkboxes on the left side of the event(s) which I can choose any event(s) to be moved to another event list or be deleted. 
+When I skim through the events, I choose a certain event that is cancelled. 
+Then I click the checkboxes right beside the event(s), I start to click the “delete” button. 
+And I should see the message pop up saying “You have successfully delete this event (or all events)”
+
+
+________________
+
+
+
+
+Feature: Create Event
+
+
+User Story: As a user, I want to navigate to the new event page so that I can create a new event entry. The event entry includes basic information, such as the title of the event, description, and detailed content
+
+
+Scenario: As a user, I want to navigate from the website’s homepage to the new event page
+
+
+Given I am on the homepage
+When I click on the sign in/ registration links
+Then I should have access to my account
+When I click on the drop down navigation menu
+Then I should see the Event List link option
+When I click on the Event List option
+Then I should see the Event List page
+When I click on the “Create New Event” link
+Then I should see the “New Event Page”
+And I should see the Event Title field
+And I should see the Event Description field
+And I should see the Event Location field
+And I should see the Event Month field
+And I should see the Event Day field
+And I should see the Event Year field 
+And I should see the Event Start hour(s) field
+And I should see the Event Start minute(s) field
+And I should see the Event Duration in hour(s) field
+And I should see the Event Duration in minute(s) field
+
+
+________________
+
+
+Feature: Login
+
+
+User Story: As a user, I want to be able to have a unique user ID and password so that only I can access my information stored on this site.
+
+
+Scenario: As a user, I want to input my user ID and password to be able to see my saved connections list.
+
+
+GIVEN: I am on the user login page.
+WHEN: I enter my userID and password in the appropriate text boxes and click the       “Login” button
+THEN: I should see the browser navigate to my saved connections list for review.
+GIVEN: I navigate to the list of available events while logged in.
+WHEN: I click on an available event
+THEN: I should navigate to the event details of the event I chose.
+GIVEN: I decide to submit an RSVP Response to the event selected
+WHEN: I click “YES”, “NO”, or “MAYBE”
+THEN: My response and the event itself should be saved in my list of connections without requiring me to login again.

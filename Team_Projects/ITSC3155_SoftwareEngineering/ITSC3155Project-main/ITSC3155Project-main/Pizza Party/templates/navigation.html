@@ -1,0 +1,37 @@
+<div class="navbar">
+    <a href="{{ url_for('index') }}" class="active">Home</a>
+
+    {% if user %}
+        <a href="{{ url_for('get_events') }}">My Events</a>
+        <a href="{{ url_for('new_event') }}"> Add Event </a>
+        <div class="dropdown">
+            <button class="dropbtn">User Account
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+               <a href="{{ url_for('edit') }}"> Edit Profile</a>
+                <a href="{{ url_for('page_change_password') }}"> Change Password</a>
+
+            </div>
+        </div>
+        <a href="{{ url_for('logout') }}"> Logout</a>
+
+
+    <!-- Dark Mode Switch-->
+    <div class="mode">
+        Dark mode:
+        <span class="change">OFF</span>
+    </div>
+    {% else %}
+    <nav>
+        <a href="{{ url_for('login') }}"> Login</a>
+        <a href="{{ url_for('register') }}"> Register</a>
+    </nav>
+    {% endif %}
+    <a href="{{ url_for('about') }}"> About</a>
+    <a href="{{ url_for('contact') }}"> Contact Us</a>
+
+</div>
+
+
+

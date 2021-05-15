@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='sub_menu.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='contactstyle.css') }}">
+    <link href="{{ url_for('static', filename='light.css') }}" rel="stylesheet" id="swapsheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.15/jquery.bxslider.min.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.15/jquery.bxslider.min.js"></script>
+    <script src="{{ url_for('static', filename='slider.js') }}"></script>
+    <script src="{{ url_for('static', filename='dark_mode.js') }}"></script>
+
+<body>
+    <nav class="navigation max-width-1 m-auto">
+
+        {% include "navigation.html" %}
+        <script>
+            var dark_mode = "default";
+            {% if user %}
+                dark_mode = "{{session['user_dark_mode'] }}";
+            {% endif %}
+            set_dark_mode(dark_mode);
+        </script>
+    </nav>
+    <div class="home-articles max-width-1 m-auto font2">
+
+        <div class="content-left">
+            <h2>Contact Us</h2>
+            <p>
+                Thank you for your feedback! A team member will get back to you shortly!
+            </p>
+        </div>
+
+    </div>
+</body>
+
+</html>

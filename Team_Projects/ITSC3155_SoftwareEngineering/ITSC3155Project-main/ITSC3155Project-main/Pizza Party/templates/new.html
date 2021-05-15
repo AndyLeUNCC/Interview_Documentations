@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta content="Pizza Party App" name="description">
+    <title>Pizza Party App - New Event</title>
+    <!-- styles -->
+    <link href="{{ url_for('static', filename='main.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='sub_menu.css') }}" rel="stylesheet">
+
+    <script src="{{ url_for('static', filename='js/jquery-3.1.1.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.ui.widget.js') }}"></script>
+
+    <script src="{{ url_for('static', filename='js/jquery.fileupload.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.fileupload-process.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.fileupload-ui.js') }}"></script>
+    <script src="{{ url_for('static', filename='dark_mode.js') }}"></script>
+
+    <script>
+        $(function () {
+            $('#fileupload').fileupload({
+                url: 'upload',
+                dataType: 'json',
+                add: function (e, data) {
+                    data.submit();
+                },
+                success: function (response, status) {
+                    console.log(response.filename);
+                    {% set url = url_for('static', filename = "Uploads/") %}
+                    var filePath = "{{ url}}" + response.filename;
+
+                    $('#imgUpload').attr('src', filePath);
+                    $('#filePath').val(response.filename);
+                    console.log('success');
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            });
+        })
+    </script>
+</head>
+
+<body id="background_body_new">
+
+    {% include "navigation.html" %}
+    <script>
+        var dark_mode = "default";
+        {% if user %}
+        dark_mode = "{{session['user_dark_mode'] }}";
+        {% endif %}
+        set_dark_mode(dark_mode);
+    </script>
+
+    <h1>Welcome to the Pizza Party App! {% if user %}Hello, {{user}}!{% endif %}</h1>
+    <fieldset class="container">
+        {%if event%}
+        <h2>Edit Event</h2>
+        {% else %}
+        <h2>Create Event</h2>
+        {% endif %}
+    </fieldset>
+    {% if event %}
+    <form action="{{url_for('update_event', event_id=event.event_id)}}" method="post">
+        {% else %}
+        <form action="new" method="post">
+            {% endif %}
+            <fieldset class="container">
+                <p><label for="name">Title: </label>
+                    <input name="name" required="required" type="text"
+                        value="{% if event %}{{event.name}}{% endif %}" />
+                </p>
+                <p><label for="eventDate">Date: </label>
+                    <input name="eventDate" required="required" type="date"
+                        value="{% if event %}{{event.eventDate}}{% endif %}" />
+                </p>
+                <p><label for="startTime">Start Time: </label>
+                    <input name="startTime" required="required" type="time"
+                        value="{% if event %}{{event.startTime}}{% endif %}" />
+                </p>
+                <p><label for="endTime">End Time: </label>
+                    <input name="endTime" required="required" type="time"
+                        value="{% if event %}{{event.endTime}}{% endif %}" />
+                </p><br>
+                <p><label for="eventText">Event description: </label></p>
+                <textarea name="eventText" rows="6" cols="50"
+                    placeholder="Add a description for your event!">{% if event %}{{event.desc}}{% endif %}</textarea>
+                <div>
+                    <h3>Upload Photo for this event</h3>
+                    <input type="file" name="file" id="fileupload" style="display:none;" />
+                    <label for="fileupload">
+                        <img alt="Cancel" src="{{ url_for('static', filename='images/upload.png')}}" width="50px">
+                    </label>
+                    {% if event %}
+                    {% set url = url_for('static',filename="uploads/") %}
+                    {% set path_photo = url + event.path_image %}
+                    {% set photo_name = event.path_image %}
+
+                    {% else %}
+                    {% set path_photo = "../static/images/default_pizza.jpg" %}
+                    {% set photo_name = "default" %}
+
+
+                    {% endif %}
+                    <img id="imgUpload" src="{{path_photo}}" style="width: 140px; height: 140px;">
+                    <input id="filePath" name="filePath" type="hidden" value="{{photo_name}}">
+                </div>
+                <p>
+                    {% if event %}
+                    <button type="submit" value="Update">
+                        <img alt="Update" src="{{ url_for('static', filename='images/update.png')}}" width="50px">
+
+                    </button>
+                    {% else %}
+                    <button type="submit" value="Add">
+                        <img alt="Add" src="{{ url_for('static', filename='images/add.png')}}" width="50px">
+                    </button>
+
+                    {% endif %}
+
+                    <a href="{{ url_for('cancel') }}">
+                        <img alt="Cancel" src="{{ url_for('static', filename='images/cancel.png')}}" width="50px">
+
+                    </a>
+                </p>
+            </fieldset>
+        </form>
+</body>
+
+</html>

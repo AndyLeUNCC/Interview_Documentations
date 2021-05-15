@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='forms.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='sub_menu.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.15/jquery.bxslider.min.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='dark_mode.js') }}"></script>
+
+
+</head>
+    <body>
+
+        {% include "navigation.html" %}
+        <script>
+            var dark_mode = "default";
+            {% if user %}
+                dark_mode = "{{session['user_dark_mode'] }}";
+            {% endif %}
+            set_dark_mode(dark_mode);
+        </script>
+
+        <h1>Welcome to the Pizza Party App! {% if user %}Hello, {{user}}!{% endif %}</h1>
+
+        <h2>Use this site to maintain and organize your events.</h2>
+        <div class="formwrapper">
+            <h2 class="title">Register</h2>
+            <form method="POST" action="/register">
+                <div class="form-field">{{ form.firstname.label }} {{ form.firstname }}
+                    {% if form.firstname.errors %}
+                    <ul class="errors">
+                        {% for error in form.firstname.errors %}
+                        <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+                <div class="form-field">{{ form.lastname.label }} {{ form.lastname }}
+                    {% if form.lastname.errors %}
+                    <ul class="errors">
+                        {% for error in form.lastname.errors %}
+                        <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+                <div class="form-field">{{ form.email.label }} {{ form.email }}
+                    {% if form.email.errors %}
+                    <ul class="errors">
+                        {% for error in form.email.errors %}
+                        <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+                <div class="form-field">{{ form.password.label }} {{ form.password }}
+                    {% if form.password.errors %}
+                    <ul class="errors">
+                        {% for error in form.password.errors %}
+                        <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+                <div class="form-field">{{ form.confirmPassword.label }} {{ form.confirmPassword }}
+                    {% if form.confirmPassword.errors %}
+                    <ul class="errors">
+                        {% for error in form.confirmPassword.errors %}
+                        <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+                {{ form.submit }}
+            </form>
+
+        </div>
+    </body>
+</html>

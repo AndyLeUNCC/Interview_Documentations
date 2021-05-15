@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Pizza Party App">
+        <title>Pizza Party</title>
+        <!-- styles -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='sub_menu.css') }}">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.15/jquery.bxslider.min.css" rel="stylesheet" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.15/jquery.bxslider.min.js"></script>
+
+        <script src="{{ url_for('static', filename='slider.js') }}"></script>
+        <script src="{{ url_for('static', filename='dark_mode.js') }}"></script>
+
+
+    </head>
+    <body>
+        {% include "navigation.html" %}
+        <script>
+            var dark_mode = "default";
+            {% if user %}
+                dark_mode = "{{session['user_dark_mode'] }}";
+            {% endif %}
+            set_dark_mode(dark_mode);
+        </script>
+        <h1>Welcome to the Pizza Party App! {% if user %}Hello, {{user}}!{% endif %}</h1>
+
+        <h2>Use this site to maintain and organize your events.</h2>
+
+        <div>
+            <ul id="slider">
+                <li><img src="{{ url_for('static', filename='images_slider/pizza_party.jpeg')}}" alt="pizza_party" title="Invite Your Friends and Eat Pizza Together"></li>
+                <li><img src="{{ url_for('static', filename='images_slider/pizza_party3.jpeg')}}" alt="pizza_party2" title="Enjoy Outdoor Party"></li>
+                <li><img src="{{ url_for('static', filename='images_slider/46-pizza-png-image.png')}}" alt="hello_pizza" title="Have Some Delicious Pizza"></li>
+                <li><img src="{{ url_for('static', filename='images_slider/pizza-3007395_640.jpg')}}" alt="pizza_gang" title="Pizza Gang!!!"></li>
+            </ul>
+        </div>
+
+    </body>
+</html>
