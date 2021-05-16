@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">MidTermExam</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="create_new_account">Create New Account</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="name">Name</string>
+    <string name="msgNameErrorEmpty">Name cannot be empty</string>
+    <string name="msgEmailErrorEmpty">Email address cannot be empty</string>
+    <string name="msgPasswordErrorEmpty">Password cannot be empty</string>
+    <string name="msgForumTitleErrorEmpty">Forum title cannot be empty</string>
+    <string name="msgForumDescriptionErrorEmpty">Forum description cannot be empty</string>
+
+    <string name="submit">Submit</string>
+    <string name="cancel">Cancel</string>
+    <string name="log_out">Log Out</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="genres">Genres</string>
+    <string name="new_forum">New Forum</string>
+
+</resources>
